@@ -65,6 +65,8 @@ class Cell():
 
 
     def draw(self):
+        if self._window is None:
+            return
         DEFAULT_FILL_COLOR = "black"
         if self.has_left_wall:
             self._window.draw_line(Line(self._upper_left, self._lower_left), DEFAULT_FILL_COLOR)
