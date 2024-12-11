@@ -1,20 +1,22 @@
 from graphics import Window, Line, Point, Cell
+from maze import Maze
 
-def main():
-    win = Window(800, 600)
-    
-    p1 = Point(10, 10)
-    p2 = Point(20, 20)
-    p3 = Point (0, 40)
-    p4 = Point(40, 60)
+def main() -> None:
 
-    cell1 = Cell(p1, p2, win)
-    cell1.has_bottom_wall = False
-    cell2 = Cell(p3, p4, win)
+    margin = 10
+    num_cols = 18
+    num_rows = 12
 
-    cell1.draw()
-    cell2.draw()
-    
+    cell_width = 40
+    cell_height = 40
+
+    window_width = margin * 2 + cell_width * num_cols
+    window_height = margin * 2 + cell_height * num_rows
+
+    win = Window(window_width, window_height)
+
+    maze = Maze(margin, margin, num_rows, num_cols, cell_width, cell_height, win)
+
     win.wait_for_close()
 
 

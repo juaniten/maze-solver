@@ -26,7 +26,7 @@ class Window():
         self._root.title = "Maze solver"
         self._root.protocol("WM_DELETE_WINDOW", self.close)
 
-        self._canvas = Canvas(self._root)
+        self._canvas = Canvas(self._root, height=self._height, width=self._width)
         self._canvas.pack()
         self._window_running = False
         
@@ -59,6 +59,8 @@ class Cell():
         self._upper_right = Point(lower_right.x, upper_left.y)
         self._lower_left = Point(upper_left.x, lower_right.y)
         
+        self.center = Point(self._upper_right.x - (self._upper_right.x - self._upper_left.x) / 2, 
+                            self._lower_left.y - (self._lower_left.y - self._upper_left.y) / 2)
         self._window = window
 
 
@@ -72,3 +74,10 @@ class Cell():
             self._window.draw_line(Line(self._upper_left, self._upper_right), DEFAULT_FILL_COLOR)
         if self.has_bottom_wall:
             self._window.draw_line(Line(self._lower_left, self._lower_right), DEFAULT_FILL_COLOR)
+
+    def draw_move(self, to_cell, undo=False):
+        line_color = "gray" if undo else "red"
+
+        line = Line(self.center, to_cell.center)
+        self._window.draw_line(line, line_color)
+        
