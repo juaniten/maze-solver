@@ -68,14 +68,24 @@ class Cell():
         if self._window is None:
             return
         DEFAULT_FILL_COLOR = "black"
+        DEFAULT_BACKGROUND_COLOR = "#d9d9d9"
         if self.has_left_wall:
             self._window.draw_line(Line(self._upper_left, self._lower_left), DEFAULT_FILL_COLOR)
+        else:
+            self._window.draw_line(Line(self._upper_left, self._lower_left), DEFAULT_BACKGROUND_COLOR)
+
         if self.has_right_wall:
             self._window.draw_line(Line(self._upper_right, self._lower_right), DEFAULT_FILL_COLOR)
+        else:
+            self._window.draw_line(Line(self._upper_right, self._lower_right), DEFAULT_BACKGROUND_COLOR)
         if self.has_top_wall:
             self._window.draw_line(Line(self._upper_left, self._upper_right), DEFAULT_FILL_COLOR)
+        else:
+            self._window.draw_line(Line(self._upper_left, self._upper_right), DEFAULT_BACKGROUND_COLOR)
         if self.has_bottom_wall:
             self._window.draw_line(Line(self._lower_left, self._lower_right), DEFAULT_FILL_COLOR)
+        else:
+            self._window.draw_line(Line(self._lower_left, self._lower_right), DEFAULT_BACKGROUND_COLOR)
 
     def draw_move(self, to_cell, undo=False):
         line_color = "gray" if undo else "red"
