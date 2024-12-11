@@ -62,7 +62,7 @@ class Cell():
         self.center = Point(self._upper_right.x - (self._upper_right.x - self._upper_left.x) / 2, 
                             self._lower_left.y - (self._lower_left.y - self._upper_left.y) / 2)
         self._window = window
-
+        self.visited = False
 
     def draw(self):
         if self._window is None:

@@ -1,11 +1,11 @@
-from graphics import Window, Line, Point, Cell
+from graphics import Window
 from maze import Maze
 
 def main() -> None:
 
     margin = 10
-    num_cols = 18
-    num_rows = 12
+    num_cols = 30
+    num_rows = 20
 
     cell_width = 40
     cell_height = 40
@@ -16,6 +16,7 @@ def main() -> None:
     win = Window(window_width, window_height)
 
     maze = Maze(margin, margin, num_rows, num_cols, cell_width, cell_height, win)
+    maze.solve()
 
     win.wait_for_close()
 
